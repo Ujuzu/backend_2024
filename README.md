@@ -1,5 +1,8 @@
 # Ujuzi STEMex Solution
 
+| <img src="./ujuzi.png" width="800"/> |
+|:---:|
+
 ## Overview
 
 Ujuzi STEMex is an innovative educational platform designed to bridge the technology skills gap by providing immersive, hands-on learning experiences in STEM disciplines. Our integrated solution combines web platforms, physical equipment, and gamified simulations to transform how students learn complex technical concepts.
