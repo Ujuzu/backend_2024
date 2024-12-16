@@ -144,8 +144,12 @@ setup_database() {
     # Determine PostgreSQL admin user
     PG_ADMIN_USER="postgres"
 
+    # Drop existing database if it exists
+    sudo -u $PG_ADMIN_USER psql -c "DROP DATABASE IF EXISTS ${PROJECT_NAME}_db;"
+
     # Create database
     sudo -u $PG_ADMIN_USER psql -c "CREATE DATABASE ${PROJECT_NAME}_db;"
+    sudo -u $PG_ADMIN_USER psql -c "DROP ROLE IF EXISTS $DB_USER;"
     sudo -u $PG_ADMIN_USER psql -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';"
     sudo -u $PG_ADMIN_USER psql -c "GRANT ALL PRIVILEGES ON DATABASE ${PROJECT_NAME}_db TO $DB_USER;"
 
@@ -154,6 +158,8 @@ setup_database() {
     export DB_NAME="${PROJECT_NAME}_db"
     export DB_USER
     export DB_PASS
+
+    echo -e "${GREEN}Database ${PROJECT_NAME}_db set up successfully with user $DB_USER.${NC}"
 }
 
 # Strapi project setup
@@ -161,10 +167,16 @@ create_strapi_project() {
     echo -e "${YELLOW}Creating new Strapi project...${NC}"
 
     # Create and navigate to project directory
-    npx create-strapi-app@latest $PROJECT_NAME --database postgres
+    npx create-strapi-app@latest $PROJECT_NAME --quickstart
 
     # Navigate to project directory
     cd $PROJECT_NAME
+
+    # Install PostgreSQL driver
+    npm install pg
+
+    # Remove default SQLite configuration
+    rm -rf config/database.js
 
     # Configure database connection
     cat << EOF > config/database.js
