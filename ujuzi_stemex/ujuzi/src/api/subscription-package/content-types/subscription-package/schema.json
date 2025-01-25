@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscription_packages",
+  "info": {
+    "singularName": "subscription-package",
+    "pluralName": "subscription-packages",
+    "displayName": "Subscription Package",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "duration": {
+      "type": "string"
+    }
+  }
+}

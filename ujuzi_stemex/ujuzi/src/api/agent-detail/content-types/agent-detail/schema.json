@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agent_details",
+  "info": {
+    "singularName": "agent-detail",
+    "pluralName": "agent-details",
+    "displayName": "Agent Detail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "authorized_on": {
+      "type": "date"
+    }
+  }
+}

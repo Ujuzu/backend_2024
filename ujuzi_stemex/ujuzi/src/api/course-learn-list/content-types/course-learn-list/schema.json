@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_learn_lists",
+  "info": {
+    "singularName": "course-learn-list",
+    "pluralName": "course-learn-lists",
+    "displayName": "Course Learn List"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "learn_list_name": {
+      "type": "string"
+    }
+  }
+}

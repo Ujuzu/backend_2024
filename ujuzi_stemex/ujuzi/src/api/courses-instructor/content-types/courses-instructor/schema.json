@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses_instructors",
+  "info": {
+    "singularName": "courses-instructor",
+    "pluralName": "courses-instructors",
+    "displayName": "Courses Instructor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "instructor_name": {
+      "type": "string"
+    }
+  }
+}

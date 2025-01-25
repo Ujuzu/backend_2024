@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_target_groups",
+  "info": {
+    "singularName": "course-target-group",
+    "pluralName": "course-target-groups",
+    "displayName": "Course Target Group"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "target_group_name": {
+      "type": "string"
+    }
+  }
+}

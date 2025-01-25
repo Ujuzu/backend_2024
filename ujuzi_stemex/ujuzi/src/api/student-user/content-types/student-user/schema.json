@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_users",
+  "info": {
+    "singularName": "student-user",
+    "pluralName": "student-users",
+    "displayName": "Student User"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "student_name": {
+      "type": "string"
+    }
+  }
+}

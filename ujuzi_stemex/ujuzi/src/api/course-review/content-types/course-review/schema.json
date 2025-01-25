@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_reviews",
+  "info": {
+    "singularName": "course-review",
+    "pluralName": "course-reviews",
+    "displayName": "Course Review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "review": {
+      "type": "integer"
+    }
+  }
+}

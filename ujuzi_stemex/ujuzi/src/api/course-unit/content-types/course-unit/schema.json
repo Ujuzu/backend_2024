@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_units",
+  "info": {
+    "singularName": "course-unit",
+    "pluralName": "course-units",
+    "displayName": "Course Unit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "unit_title": {
+      "type": "string"
+    }
+  }
+}

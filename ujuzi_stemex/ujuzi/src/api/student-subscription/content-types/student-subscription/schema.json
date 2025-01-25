@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_subscriptions",
+  "info": {
+    "singularName": "student-subscription",
+    "pluralName": "student-subscriptions",
+    "displayName": "Student subscription"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "started_at": {
+      "type": "datetime"
+    }
+  }
+}

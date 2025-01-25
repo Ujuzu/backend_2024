@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscribers_lists",
+  "info": {
+    "singularName": "subscribers-list",
+    "pluralName": "subscribers-lists",
+    "displayName": "Subscribers List"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subscriber": {
+      "type": "string"
+    }
+  }
+}

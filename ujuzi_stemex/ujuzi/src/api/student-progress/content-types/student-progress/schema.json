@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_progresses",
+  "info": {
+    "singularName": "student-progress",
+    "pluralName": "student-progresses",
+    "displayName": "Student Progress"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "completion_status": {
+      "type": "integer"
+    }
+  }
+}

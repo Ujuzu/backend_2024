@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_qualification_requirements",
+  "info": {
+    "singularName": "course-qualification-requirement",
+    "pluralName": "course-qualification-requirements",
+    "displayName": "Course Qualification Requirement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "qualification_name": {
+      "type": "string"
+    }
+  }
+}

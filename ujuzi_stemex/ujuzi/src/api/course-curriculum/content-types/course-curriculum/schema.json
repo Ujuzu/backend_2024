@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_curricula",
+  "info": {
+    "singularName": "course-curriculum",
+    "pluralName": "course-curricula",
+    "displayName": "Course Curriculum"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "curriculum_title": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_subcategories",
+  "info": {
+    "singularName": "course-subcategory",
+    "pluralName": "course-subcategories",
+    "displayName": "Course Subcategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    }
+  }
+}

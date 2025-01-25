@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "study_resources",
+  "info": {
+    "singularName": "study-resource",
+    "pluralName": "study-resources",
+    "displayName": "Study Resource",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "serial": {
+      "type": "string",
+      "unique": true
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::unit.unit",
+      "inversedBy": "study_resources"
+    }
+  }
+}

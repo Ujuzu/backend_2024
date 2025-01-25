@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lessons",
+  "info": {
+    "singularName": "lesson",
+    "pluralName": "lessons",
+    "displayName": "Lesson"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lesson_title": {
+      "type": "string"
+    },
+    "lesson_content": {
+      "type": "text"
+    }
+  }
+}
