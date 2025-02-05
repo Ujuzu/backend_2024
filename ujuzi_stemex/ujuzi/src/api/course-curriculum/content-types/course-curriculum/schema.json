@@ -4,7 +4,8 @@
   "info": {
     "singularName": "course-curriculum",
     "pluralName": "course-curricula",
-    "displayName": "Course Curriculum"
+    "displayName": "Course Curriculum",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,6 +13,15 @@
   "pluginOptions": {},
   "attributes": {
     "curriculum_title": {
+      "type": "string"
+    },
+    "curriculum_reg": {
+      "type": "string",
+      "unique": true,
+      "required": false,
+      "maxLength": 255
+    },
+    "curriculum_desc": {
       "type": "string"
     }
   }

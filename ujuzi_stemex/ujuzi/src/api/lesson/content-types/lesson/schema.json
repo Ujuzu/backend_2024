@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lesson",
     "pluralName": "lessons",
-    "displayName": "Lesson"
+    "displayName": "Lesson",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,22 @@
       "type": "string"
     },
     "lesson_content": {
+      "type": "text"
+    },
+    "video_url": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "course_unit": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "integer"
+    },
+    "reading_min": {
+      "type": "integer"
+    },
+    "lesson_content_2": {
       "type": "text"
     }
   }

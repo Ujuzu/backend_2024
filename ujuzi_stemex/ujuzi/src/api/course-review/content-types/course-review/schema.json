@@ -4,7 +4,8 @@
   "info": {
     "singularName": "course-review",
     "pluralName": "course-reviews",
-    "displayName": "Course Review"
+    "displayName": "Course Review",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,16 @@
   "attributes": {
     "review": {
       "type": "integer"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "approved": {
+      "type": "boolean"
     }
   }
 }

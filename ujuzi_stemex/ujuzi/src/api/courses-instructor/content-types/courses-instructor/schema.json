@@ -4,7 +4,8 @@
   "info": {
     "singularName": "courses-instructor",
     "pluralName": "courses-instructors",
-    "displayName": "Courses Instructor"
+    "displayName": "Courses Instructor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,42 @@
   "attributes": {
     "instructor_name": {
       "type": "string"
+    },
+    "instructor_title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_desc": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_linked_in": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_x": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_fb": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_youtube": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "instructor_email": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "country": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "contact": {
+      "type": "string",
+      "maxLength": 255
     }
   }
 }
