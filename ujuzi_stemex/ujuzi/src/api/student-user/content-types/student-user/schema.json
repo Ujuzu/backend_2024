@@ -13,6 +13,12 @@
   "attributes": {
     "student_name": {
       "type": "string"
+    },
+    "student_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-progress.student-progress",
+      "mappedBy": "student_user_id"
     }
   }
 }

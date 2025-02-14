@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student-progress",
     "pluralName": "student-progresses",
-    "displayName": "Student Progress"
+    "displayName": "Student Progress",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,12 @@
   "attributes": {
     "completion_status": {
       "type": "integer"
+    },
+    "student_user_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student-user.student-user",
+      "inversedBy": "student_progresses"
     }
   }
 }

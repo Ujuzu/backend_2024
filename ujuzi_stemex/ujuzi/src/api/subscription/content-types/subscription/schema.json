@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subscription",
     "pluralName": "subscriptions",
-    "displayName": "subscription"
+    "displayName": "subscription",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,22 @@
   "attributes": {
     "comments": {
       "type": "string"
+    },
+    "started_at": {
+      "type": "datetime"
+    },
+    "student_ids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-user.student-user"
+    },
+    "ended_at": {
+      "type": "datetime"
+    },
+    "subscription_package_ids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription-package.subscription-package"
     }
   }
 }
