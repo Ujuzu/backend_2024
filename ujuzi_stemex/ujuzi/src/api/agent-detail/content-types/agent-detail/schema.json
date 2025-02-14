@@ -4,7 +4,8 @@
   "info": {
     "singularName": "agent-detail",
     "pluralName": "agent-details",
-    "displayName": "Agent Detail"
+    "displayName": "Agent Detail",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,27 @@
   "attributes": {
     "authorized_on": {
       "type": "date"
+    },
+    "agent_number": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "engagement_type": {
+      "type": "string",
+      "required": true
+    },
+    "authorized_by": {
+      "type": "string",
+      "required": true
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    "singned_document": {
+      "type": "string"
     }
   }
 }

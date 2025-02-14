@@ -4,7 +4,8 @@
   "info": {
     "singularName": "course",
     "pluralName": "courses",
-    "displayName": "Course"
+    "displayName": "Course",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,51 @@
   "attributes": {
     "short_desc": {
       "type": "string"
+    },
+    "course_outline": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "rating_count": {
+      "type": "integer"
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "certificate": {
+      "type": "boolean"
+    },
+    "quizes": {
+      "type": "boolean"
+    },
+    "level": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "short_desc_2": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "integer"
+    },
+    "short_desc_3": {
+      "type": "string"
+    },
+    "course_name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "weekly_curriculum_intro": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "video_url": {
+      "type": "string",
+      "maxLength": 255
     }
   }
 }

@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAgentDetailAgentDetail extends Struct.CollectionTypeSchema {
   collectionName: 'agent_details';
   info: {
+    description: '';
     displayName: 'Agent Detail';
     pluralName: 'agent-details';
     singularName: 'agent-detail';
@@ -380,10 +381,16 @@ export interface ApiAgentDetailAgentDetail extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    agent_number: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    authorized_by: Schema.Attribute.String & Schema.Attribute.Required;
     authorized_on: Schema.Attribute.Date;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    engagement_type: Schema.Attribute.String & Schema.Attribute.Required;
+    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -391,6 +398,7 @@ export interface ApiAgentDetailAgentDetail extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    singned_document: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -441,6 +449,7 @@ export interface ApiCourseCategorieCourseCategorie
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -459,6 +468,7 @@ export interface ApiCourseCurriculumCourseCurriculum
   extends Struct.CollectionTypeSchema {
   collectionName: 'course_curricula';
   info: {
+    description: '';
     displayName: 'Course Curriculum';
     pluralName: 'course-curricula';
     singularName: 'course-curriculum';
@@ -470,6 +480,12 @@ export interface ApiCourseCurriculumCourseCurriculum
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    curriculum_desc: Schema.Attribute.String;
+    curriculum_reg: Schema.Attribute.String &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     curriculum_title: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -546,6 +562,7 @@ export interface ApiCourseReviewCourseReview
   extends Struct.CollectionTypeSchema {
   collectionName: 'course_reviews';
   info: {
+    description: '';
     displayName: 'Course Review';
     pluralName: 'course-reviews';
     singularName: 'course-review';
@@ -554,6 +571,11 @@ export interface ApiCourseReviewCourseReview
     draftAndPublish: true;
   };
   attributes: {
+    approved: Schema.Attribute.Boolean;
+    comment: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -564,6 +586,7 @@ export interface ApiCourseReviewCourseReview
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    rating: Schema.Attribute.Integer;
     review: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -575,6 +598,7 @@ export interface ApiCourseSubcategoryCourseSubcategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'course_subcategories';
   info: {
+    description: '';
     displayName: 'Course Subcategory';
     pluralName: 'course-subcategories';
     singularName: 'course-subcategory';
@@ -587,6 +611,15 @@ export interface ApiCourseSubcategoryCourseSubcategory
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    level: Schema.Attribute.Integer;
+    level_name: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    level_type: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -594,6 +627,10 @@ export interface ApiCourseSubcategoryCourseSubcategory
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -632,6 +669,7 @@ export interface ApiCourseTargetGroupCourseTargetGroup
 export interface ApiCourseUnitCourseUnit extends Struct.CollectionTypeSchema {
   collectionName: 'course_units';
   info: {
+    description: '';
     displayName: 'Course Unit';
     pluralName: 'course-units';
     singularName: 'course-unit';
@@ -640,9 +678,14 @@ export interface ApiCourseUnitCourseUnit extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    course_curriculums: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    intro_pic: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -650,6 +693,16 @@ export interface ApiCourseUnitCourseUnit extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    sort_order: Schema.Attribute.Integer;
+    unit_desc: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    unit_reg: Schema.Attribute.String &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     unit_title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -660,6 +713,7 @@ export interface ApiCourseUnitCourseUnit extends Struct.CollectionTypeSchema {
 export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
+    description: '';
     displayName: 'Course';
     pluralName: 'courses';
     singularName: 'course';
@@ -668,9 +722,30 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    certificate: Schema.Attribute.Boolean;
+    course_name: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    course_outline: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    duration: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    language: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    level: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -678,10 +753,20 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    quizes: Schema.Attribute.Boolean;
+    rating_count: Schema.Attribute.Integer;
     short_desc: Schema.Attribute.String;
+    short_desc_2: Schema.Attribute.String;
+    short_desc_3: Schema.Attribute.String;
+    sort_order: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video_url: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    weekly_curriculum_intro: Schema.Attribute.String;
   };
 }
 
@@ -718,6 +803,7 @@ export interface ApiCoursesInstructorCoursesInstructor
   extends Struct.CollectionTypeSchema {
   collectionName: 'courses_instructors';
   info: {
+    description: '';
     displayName: 'Courses Instructor';
     pluralName: 'courses-instructors';
     singularName: 'courses-instructor';
@@ -726,10 +812,46 @@ export interface ApiCoursesInstructorCoursesInstructor
     draftAndPublish: true;
   };
   attributes: {
+    contact: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    country: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    instructor_desc: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    instructor_email: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    instructor_fb: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    instructor_linked_in: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     instructor_name: Schema.Attribute.String;
+    instructor_title: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    instructor_x: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    instructor_youtube: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -746,6 +868,7 @@ export interface ApiCoursesInstructorCoursesInstructor
 export interface ApiInstitutionInstitution extends Struct.CollectionTypeSchema {
   collectionName: 'institutions';
   info: {
+    description: '';
     displayName: 'Institution';
     pluralName: 'institutions';
     singularName: 'institution';
@@ -754,26 +877,42 @@ export interface ApiInstitutionInstitution extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String & Schema.Attribute.Required;
+    blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    comment: Schema.Attribute.String;
+    country: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    file: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    institutionType: Schema.Attribute.Enumeration<['ex']> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::institution.institution'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    verified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    verifiedBy: Schema.Attribute.BigInteger;
+    verifiedOn: Schema.Attribute.Date;
   };
 }
 
 export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
   collectionName: 'lessons';
   info: {
+    description: '';
     displayName: 'Lesson';
     pluralName: 'lessons';
     singularName: 'lesson';
@@ -782,10 +921,12 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    course_unit: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     lesson_content: Schema.Attribute.Text;
+    lesson_content_2: Schema.Attribute.Text;
     lesson_title: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -794,9 +935,15 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    reading_min: Schema.Attribute.Integer;
+    sort_order: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video_url: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
   };
 }
 
