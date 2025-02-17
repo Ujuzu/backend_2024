@@ -48,12 +48,6 @@
     },
     "image_url": {
       "type": "string"
-    },
-    "course": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::course.course",
-      "inversedBy": "study_resources"
     }
   }
 }
