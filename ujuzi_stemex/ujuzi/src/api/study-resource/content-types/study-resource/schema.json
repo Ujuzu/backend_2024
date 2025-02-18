@@ -30,6 +30,18 @@
       "relation": "manyToOne",
       "target": "api::unit.unit",
       "inversedBy": "study_resources"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
     }
   }
 }

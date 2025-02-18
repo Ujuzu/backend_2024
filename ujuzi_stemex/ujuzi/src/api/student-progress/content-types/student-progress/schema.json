@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student-progress",
     "pluralName": "student-progresses",
-    "displayName": "Student Progress"
+    "displayName": "Student Progress",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,12 @@
   "attributes": {
     "completion_status": {
       "type": "integer"
+    },
+    "last_accessed_at": {
+      "type": "date"
+    },
+    "lesson_id": {
+      "type": "string"
     }
   }
 }

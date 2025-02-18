@@ -4,7 +4,8 @@
   "info": {
     "singularName": "profile",
     "pluralName": "profiles",
-    "displayName": "Profile"
+    "displayName": "Profile",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,45 @@
       "type": "string"
     },
     "lastname": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "pronoun": {
+      "type": "string"
+    },
+    "other_name": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "x": {
+      "type": "string"
+    },
+    "linked_in": {
+      "type": "string"
+    },
+    "youtube": {
       "type": "string"
     }
   }

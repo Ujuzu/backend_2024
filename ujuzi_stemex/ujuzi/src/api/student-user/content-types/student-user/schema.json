@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student-user",
     "pluralName": "student-users",
-    "displayName": "Student User"
+    "displayName": "Student User",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,18 @@
   "attributes": {
     "student_name": {
       "type": "string"
+    },
+    "student_password": {
+      "type": "string"
+    },
+    "student_level": {
+      "type": "string"
+    },
+    "is_blocked": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
     }
   }
 }
