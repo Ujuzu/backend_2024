@@ -21,6 +21,7 @@
       "relation": "manyToOne",
       "target": "api::student-user.student-user",
       "inversedBy": "student_progresses"
+    },
 
     "last_accessed_at": {
       "type": "date"
