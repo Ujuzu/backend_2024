@@ -15,6 +15,14 @@
     "duration": {
       "type": "string"
     },
+
+    "study_resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::study-resource.study-resource",
+      "mappedBy": "subscription_package"
+    },
+
     "packageName": {
       "type": "string"
     },

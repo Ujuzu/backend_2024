@@ -56,6 +56,17 @@
     },
     "youtube": {
       "type": "string"
+
+    },
+    "createdbyid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    },
+    "updatedbyid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
     }
   }
 }

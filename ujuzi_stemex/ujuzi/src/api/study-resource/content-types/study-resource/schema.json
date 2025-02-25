@@ -32,13 +32,22 @@
       "inversedBy": "study_resources"
     },
     "comment": {
+
       "type": "string"
+
     },
     "file_url": {
       "type": "string"
     },
     "category": {
       "type": "string"
+    },
+
+    "subscription_package": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription-package.subscription-package",
+      "inversedBy": "study_resources"
     },
     "image_url": {
       "type": "string"
