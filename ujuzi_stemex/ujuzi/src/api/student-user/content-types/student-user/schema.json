@@ -21,6 +21,7 @@
       "relation": "oneToMany",
       "target": "api::student-progress.student-progress",
       "mappedBy": "student_user_id"
+    },
 
     "student_password": {
       "type": "string"
