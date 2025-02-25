@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student-user",
     "pluralName": "student-users",
-    "displayName": "Student User"
+    "displayName": "Student User",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,11 +15,25 @@
     "student_name": {
       "type": "string"
     },
+
     "student_progresses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::student-progress.student-progress",
       "mappedBy": "student_user_id"
+
+    "student_password": {
+      "type": "string"
+    },
+    "student_level": {
+      "type": "string"
+    },
+    "is_blocked": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+
     }
   }
 }

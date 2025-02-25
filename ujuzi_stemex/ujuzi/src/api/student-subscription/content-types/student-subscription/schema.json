@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student-subscription",
     "pluralName": "student-subscriptions",
-    "displayName": "Student subscription"
+    "displayName": "Student subscription",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,12 @@
   "attributes": {
     "started_at": {
       "type": "datetime"
+    },
+    "ended_at": {
+      "type": "date"
+    },
+    "comments": {
+      "type": "string"
     }
   }
 }

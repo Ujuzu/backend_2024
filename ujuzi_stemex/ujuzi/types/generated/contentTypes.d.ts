@@ -408,6 +408,7 @@ export interface ApiAgentDetailAgentDetail extends Struct.CollectionTypeSchema {
 export interface ApiChargeCharge extends Struct.CollectionTypeSchema {
   collectionName: 'charges';
   info: {
+    description: '';
     displayName: 'Charge';
     pluralName: 'charges';
     singularName: 'charge';
@@ -416,9 +417,13 @@ export interface ApiChargeCharge extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    amount: Schema.Attribute.Decimal;
+    approved: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    is_active: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -950,6 +955,7 @@ export interface ApiLessonLesson extends Struct.CollectionTypeSchema {
 export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
   collectionName: 'profiles';
   info: {
+    description: '';
     displayName: 'Profile';
     pluralName: 'profiles';
     singularName: 'profile';
@@ -958,21 +964,34 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
+    city: Schema.Attribute.String;
+    country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    facebook: Schema.Attribute.String;
     firstname: Schema.Attribute.String;
     lastname: Schema.Attribute.String;
+    linked_in: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::profile.profile'
     > &
       Schema.Attribute.Private;
+    occupation: Schema.Attribute.String;
+    other_name: Schema.Attribute.String;
+    phone_number: Schema.Attribute.String;
+    postal_code: Schema.Attribute.String;
+    pronoun: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    x: Schema.Attribute.String;
+    youtube: Schema.Attribute.String;
   };
 }
 
@@ -980,6 +999,7 @@ export interface ApiStudentProgressStudentProgress
   extends Struct.CollectionTypeSchema {
   collectionName: 'student_progresses';
   info: {
+    description: '';
     displayName: 'Student Progress';
     pluralName: 'student-progresses';
     singularName: 'student-progress';
@@ -992,6 +1012,8 @@ export interface ApiStudentProgressStudentProgress
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    last_accessed_at: Schema.Attribute.Date;
+    lesson_id: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1009,6 +1031,7 @@ export interface ApiStudentSubscriptionStudentSubscription
   extends Struct.CollectionTypeSchema {
   collectionName: 'student_subscriptions';
   info: {
+    description: '';
     displayName: 'Student subscription';
     pluralName: 'student-subscriptions';
     singularName: 'student-subscription';
@@ -1017,9 +1040,11 @@ export interface ApiStudentSubscriptionStudentSubscription
     draftAndPublish: true;
   };
   attributes: {
+    comments: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ended_at: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1037,6 +1062,7 @@ export interface ApiStudentSubscriptionStudentSubscription
 export interface ApiStudentUserStudentUser extends Struct.CollectionTypeSchema {
   collectionName: 'student_users';
   info: {
+    description: '';
     displayName: 'Student User';
     pluralName: 'student-users';
     singularName: 'student-user';
@@ -1048,6 +1074,8 @@ export interface ApiStudentUserStudentUser extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    is_blocked: Schema.Attribute.Boolean;
+    is_deleted: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1055,7 +1083,9 @@ export interface ApiStudentUserStudentUser extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    student_level: Schema.Attribute.String;
     student_name: Schema.Attribute.String;
+    student_password: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1075,10 +1105,14 @@ export interface ApiStudyResourceStudyResource
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String;
+    comment: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String;
+    file_url: Schema.Attribute.String;
+    image_url: Schema.Attribute.String;
     is_deleted: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1141,14 +1175,18 @@ export interface ApiSubscriptionPackageSubscriptionPackage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.String;
     duration: Schema.Attribute.String;
+    isActive: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription-package.subscription-package'
     > &
       Schema.Attribute.Private;
+    packageName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    totalMaxUsers: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1159,6 +1197,7 @@ export interface ApiSubscriptionSubscription
   extends Struct.CollectionTypeSchema {
   collectionName: 'subscriptions';
   info: {
+    description: '';
     displayName: 'subscription';
     pluralName: 'subscriptions';
     singularName: 'subscription';
@@ -1167,10 +1206,20 @@ export interface ApiSubscriptionSubscription
     draftAndPublish: true;
   };
   attributes: {
+    address: Schema.Attribute.String;
+    approvedOn: Schema.Attribute.Date;
     comments: Schema.Attribute.String;
+    contactNumber: Schema.Attribute.String;
+    contactPerson: Schema.Attribute.String;
+    country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    endDate: Schema.Attribute.Date;
+    institution: Schema.Attribute.String;
+    isActive: Schema.Attribute.Boolean;
+    isApproved: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1178,6 +1227,8 @@ export interface ApiSubscriptionSubscription
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    regNumber: Schema.Attribute.String & Schema.Attribute.Unique;
+    startDate: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1668,9 +1719,12 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    agent_detail: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::agent-detail.agent-detail'
+    >;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1693,12 +1747,21 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    profile: Schema.Attribute.Relation<'oneToOne', 'api::profile.profile'>;
+    profilePic: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    subscribers_list: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::subscribers-list.subscribers-list'
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

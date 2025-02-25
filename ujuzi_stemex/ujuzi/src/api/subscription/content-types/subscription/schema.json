@@ -30,6 +30,44 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::subscription-package.subscription-package"
+    },
+
+    "regNumber": {
+      "type": "string",
+      "unique": true
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "isApproved": {
+      "type": "boolean"
+    },
+    "approvedOn": {
+      "type": "date"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "contactPerson": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "contactNumber": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
     }
   }
 }

@@ -32,7 +32,9 @@
       "inversedBy": "study_resources"
     },
     "comment": {
-      "type": "text"
+
+      "type": "string"
+
     },
     "file_url": {
       "type": "string"
@@ -40,6 +42,7 @@
     "category": {
       "type": "string"
     },
+
     "subscription_package": {
       "type": "relation",
       "relation": "manyToOne",
