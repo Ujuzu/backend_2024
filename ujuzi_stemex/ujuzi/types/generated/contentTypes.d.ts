@@ -970,6 +970,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    createdbyid: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
     facebook: Schema.Attribute.String;
     firstname: Schema.Attribute.String;
     lastname: Schema.Attribute.String;
@@ -990,6 +991,7 @@ export interface ApiProfileProfile extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    updatedbyid: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
     x: Schema.Attribute.String;
     youtube: Schema.Attribute.String;
   };
@@ -1021,6 +1023,10 @@ export interface ApiStudentProgressStudentProgress
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    student_user_id: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::student-user.student-user'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1086,6 +1092,10 @@ export interface ApiStudentUserStudentUser extends Struct.CollectionTypeSchema {
     student_level: Schema.Attribute.String;
     student_name: Schema.Attribute.String;
     student_password: Schema.Attribute.String;
+    student_progresses: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-progress.student-progress'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1123,6 +1133,10 @@ export interface ApiStudyResourceStudyResource
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     serial: Schema.Attribute.String & Schema.Attribute.Unique;
+    subscription_package: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::subscription-package.subscription-package'
+    >;
     unit: Schema.Attribute.Relation<'manyToOne', 'api::unit.unit'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1186,6 +1200,10 @@ export interface ApiSubscriptionPackageSubscriptionPackage
       Schema.Attribute.Private;
     packageName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    study_resources: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::study-resource.study-resource'
+    >;
     totalMaxUsers: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1217,6 +1235,7 @@ export interface ApiSubscriptionSubscription
       Schema.Attribute.Private;
     email: Schema.Attribute.String;
     endDate: Schema.Attribute.Date;
+    ended_at: Schema.Attribute.DateTime;
     institution: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean;
     isApproved: Schema.Attribute.Boolean;
@@ -1229,6 +1248,15 @@ export interface ApiSubscriptionSubscription
     publishedAt: Schema.Attribute.DateTime;
     regNumber: Schema.Attribute.String & Schema.Attribute.Unique;
     startDate: Schema.Attribute.Date;
+    started_at: Schema.Attribute.DateTime;
+    student_ids: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-user.student-user'
+    >;
+    subscription_package_ids: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription-package.subscription-package'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
