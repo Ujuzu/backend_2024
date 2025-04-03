@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-03-19T13:36:56.869Z"
+    "x-generation-date": "2025-03-19T13:41:00.924Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -24,8 +24,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337/api",
-      "description": "Development server"
+      "url": "https://backend-2024-8fxl.onrender.com/api",
+      "description": "Production server"
     }
   ],
   "externalDocs": {
