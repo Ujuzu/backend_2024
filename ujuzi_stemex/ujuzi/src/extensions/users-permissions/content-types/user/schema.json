@@ -89,6 +89,18 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::subscribers-list.subscribers-list"
+    },
+    "createdBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "configurable": false
+    },
+    "updatedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "configurable": false
     }
   }
 }
