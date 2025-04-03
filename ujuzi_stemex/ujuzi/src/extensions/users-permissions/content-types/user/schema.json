@@ -9,7 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": true,
+    "draftAndPublish": false,
     "populateCreatorFields": true
   },
   "attributes": {
