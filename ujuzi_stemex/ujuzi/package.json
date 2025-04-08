@@ -2,7 +2,7 @@
   "name": "ujuzi",
   "version": "0.1.0",
   "private": true,
-  "description": "A Strapi application",
+  "description": "Online STEMEX APPLICATION",
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
@@ -11,10 +11,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.11.2",
-    "@strapi/plugin-documentation": "5.11.2",
-    "@strapi/plugin-users-permissions": "5.11.2",
-    "@strapi/strapi": "5.11.2",
+    "@strapi/plugin-cloud": "^5.11.2",
+    "@strapi/plugin-documentation": "^5.11.2",
+    "@strapi/plugin-users-permissions": "^5.11.2",
+    "@strapi/strapi": "^5.11.2",
     "better-sqlite3": "^11.8.1",
     "pg": "^8.13.1",
     "react": "^18.0.0",
@@ -29,8 +29,7 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.0.0 <=22.x.x",
-    "npm": ">=6.0.0"
+    "node": ">=22.0.0 <=26.x.x"
   },
   "strapi": {
     "uuid": "bc390033-7378-413d-8892-abdb8f958fda"
