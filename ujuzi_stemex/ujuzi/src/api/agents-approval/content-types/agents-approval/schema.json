@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agents_approvals",
+  "info": {
+    "singularName": "agents-approval",
+    "pluralName": "agents-approvals",
+    "displayName": "agents-approval",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "engagementType": {
+      "type": "string"
+    },
+    "agent_number": {
+      "type": "string"
+    },
+    "contract_doc": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "authorized_by": {
+      "type": "string"
+    },
+    "authorized_on": {
+      "type": "string"
+    },
+    "users_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "agents_approval"
+    },
+    "approval_status": {
+      "type": "boolean",
+      "default": false
+    },
+    "students": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::student-user.student-user",
+      "inversedBy": "agents_approvals"
+    },
+    "agent_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::agent-detail.agent-detail",
+      "mappedBy": "agents_id"
+    }
+  }
+}
