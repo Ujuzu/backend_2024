@@ -381,27 +381,87 @@ export interface ApiAgentDetailAgentDetail extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    agent_number: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    authorized_by: Schema.Attribute.String & Schema.Attribute.Required;
-    authorized_on: Schema.Attribute.Date;
+    agent_type: Schema.Attribute.Enumeration<['Individual', 'Organization']>;
+    agents_id: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::agents-approval.agents-approval'
+    >;
+    blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    engagement_type: Schema.Attribute.String & Schema.Attribute.Required;
-    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    is_deleted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::agent-detail.agent-detail'
     > &
       Schema.Attribute.Private;
+    organization_address: Schema.Attribute.String;
+    organization_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    organization_type: Schema.Attribute.String & Schema.Attribute.Required;
+    orginazation_email: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    singned_document: Schema.Attribute.String;
+    signed_document: Schema.Attribute.Media<'files'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users_ids: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiAgentsApprovalAgentsApproval
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'agents_approvals';
+  info: {
+    description: '';
+    displayName: 'agents-approval';
+    pluralName: 'agents-approvals';
+    singularName: 'agents-approval';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    agent_detail: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::agent-detail.agent-detail'
+    >;
+    agent_number: Schema.Attribute.String;
+    approval_status: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    authorized_by: Schema.Attribute.String;
+    authorized_on: Schema.Attribute.String;
+    blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    contract_doc: Schema.Attribute.Media<'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    engagementType: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::agents-approval.agents-approval'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    students: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::student-user.student-user'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_id: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1077,6 +1137,10 @@ export interface ApiStudentUserStudentUser extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    agents_approvals: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::agents-approval.agents-approval'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1753,6 +1817,14 @@ export interface PluginUsersPermissionsUser
       'oneToOne',
       'api::agent-detail.agent-detail'
     >;
+    agents_approval: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::agents-approval.agents-approval'
+    >;
+    agents_details: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::agent-detail.agent-detail'
+    >;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1764,6 +1836,8 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    firstname: Schema.Attribute.String;
+    lastname: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1776,10 +1850,7 @@ export interface PluginUsersPermissionsUser
         minLength: 6;
       }>;
     profile: Schema.Attribute.Relation<'oneToOne', 'api::profile.profile'>;
-    profilePic: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    profilePic: Schema.Attribute.Media<'images'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1814,6 +1885,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::agent-detail.agent-detail': ApiAgentDetailAgentDetail;
+      'api::agents-approval.agents-approval': ApiAgentsApprovalAgentsApproval;
       'api::charge.charge': ApiChargeCharge;
       'api::course-categorie.course-categorie': ApiCourseCategorieCourseCategorie;
       'api::course-curriculum.course-curriculum': ApiCourseCurriculumCourseCurriculum;

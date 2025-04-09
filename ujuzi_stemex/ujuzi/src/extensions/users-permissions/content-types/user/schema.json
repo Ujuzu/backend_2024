@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "populateCreatorFields": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -66,15 +65,25 @@
       "inversedBy": "users",
       "configurable": false
     },
+    "createdBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "configurable": false
+    },
+    "updatedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "configurable": false
+    },
     "profilePic": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": true
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "profile": {
       "type": "relation",
@@ -91,17 +100,23 @@
       "relation": "oneToOne",
       "target": "api::subscribers-list.subscribers-list"
     },
-    "createdBy": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "configurable": false
+    "firstname": {
+      "type": "string"
     },
-    "updatedBy": {
+    "lastname": {
+      "type": "string"
+    },
+    "agents_approval": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "configurable": false
+      "relation": "oneToOne",
+      "target": "api::agents-approval.agents-approval",
+      "mappedBy": "users_id"
+    },
+    "agents_details": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::agent-detail.agent-detail",
+      "mappedBy": "users_ids"
     }
   }
 }

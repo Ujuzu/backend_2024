@@ -12,29 +12,61 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "authorized_on": {
-      "type": "date"
-    },
-    "agent_number": {
+    "organization_name": {
       "type": "string",
       "unique": true,
       "required": true
     },
-    "engagement_type": {
+    "organization_type": {
       "type": "string",
       "required": true
     },
-    "authorized_by": {
+    "orginazation_email": {
       "type": "string",
       "required": true
     },
-    "is_active": {
+    "blocked": {
       "type": "boolean",
-      "default": true,
+      "default": false,
       "required": false
     },
-    "singned_document": {
+    "agent_type": {
+      "type": "enumeration",
+      "enum": [
+        "Individual",
+        "Organization"
+      ]
+    },
+    "signed_document": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "organization_address": {
       "type": "string"
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "agents_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::agents-approval.agents-approval",
+      "inversedBy": "agent_detail"
+    },
+    "users_ids": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "agents_details"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
