@@ -17,6 +17,12 @@
     },
     "description": {
       "type": "string"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "course_categories"
     }
   }
 }

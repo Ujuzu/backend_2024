@@ -4,15 +4,22 @@
   "info": {
     "singularName": "course-learn-list",
     "pluralName": "course-learn-lists",
-    "displayName": "Course Learn List"
+    "displayName": "Course Learn List",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "learn_list_name": {
+    "learn_list_desc": {
       "type": "string"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "course_learn_lists"
     }
   }
 }

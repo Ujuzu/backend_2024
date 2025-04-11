@@ -23,7 +23,7 @@
     "description": {
       "type": "text"
     },
-    "institutionType": {
+    "institution_type": {
       "type": "enumeration",
       "enum": [
         "ex"
@@ -56,14 +56,15 @@
       "type": "biginteger"
     },
     "file": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

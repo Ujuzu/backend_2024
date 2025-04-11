@@ -4,15 +4,22 @@
   "info": {
     "singularName": "course-target-group",
     "pluralName": "course-target-groups",
-    "displayName": "Course Target Group"
+    "displayName": "Course Target Group",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "target_group_name": {
+    "target_group_desc": {
       "type": "string"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "course_target_groups"
     }
   }
 }
