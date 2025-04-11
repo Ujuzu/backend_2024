@@ -117,6 +117,12 @@
       "relation": "manyToMany",
       "target": "api::agent-detail.agent-detail",
       "mappedBy": "users_ids"
+    },
+    "course_reviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-review.course-review",
+      "mappedBy": "reviewer"
     }
   }
 }

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "instructor_ratings",
+  "info": {
+    "singularName": "instructor-rating",
+    "pluralName": "instructor-ratings",
+    "displayName": "instructor_rating"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "rating": {
+      "type": "integer"
+    },
+    "courses_instructors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::courses-instructor.courses-instructor",
+      "inversedBy": "instructor_ratings"
+    }
+  }
+}

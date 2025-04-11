@@ -30,6 +30,12 @@
     "level_name": {
       "type": "string",
       "maxLength": 255
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "course_subcategories"
     }
   }
 }

@@ -40,16 +40,40 @@
       "maxLength": 255
     },
     "instructor_email": {
-      "type": "string",
+      "type": "email",
       "maxLength": 255
     },
-    "country": {
+    "address": {
       "type": "string",
       "maxLength": 255
     },
     "contact": {
       "type": "string",
       "maxLength": 255
+    },
+    "instructor_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "courses_instructors"
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "instructor_ratings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::instructor-rating.instructor-rating",
+      "mappedBy": "courses_instructors"
     }
   }
 }

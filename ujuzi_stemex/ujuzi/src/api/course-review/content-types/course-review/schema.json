@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "review": {
-      "type": "integer"
-    },
     "rating": {
       "type": "integer"
     },
@@ -24,6 +21,25 @@
     },
     "approved": {
       "type": "boolean"
+    },
+    "reviewer": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "course_reviews"
+    },
+    "admin_action": {
+      "type": "string"
+    },
+    "need_admin_action": {
+      "type": "boolean",
+      "default": false
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "course_reviews"
     }
   }
 }

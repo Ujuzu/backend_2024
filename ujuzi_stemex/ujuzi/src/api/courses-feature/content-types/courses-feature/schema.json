@@ -4,15 +4,22 @@
   "info": {
     "singularName": "courses-feature",
     "pluralName": "courses-features",
-    "displayName": "Courses Feature"
+    "displayName": "Courses Feature",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "courses_features_name": {
+    "features_desc": {
       "type": "text"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "courses_features"
     }
   }
 }

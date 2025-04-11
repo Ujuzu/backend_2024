@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "short_desc": {
-      "type": "string"
-    },
     "course_outline": {
       "type": "string",
       "maxLength": 255
@@ -37,28 +34,80 @@
       "maxLength": 255
     },
     "short_desc_2": {
-      "type": "string"
+      "type": "richtext"
     },
     "sort_order": {
       "type": "integer"
     },
     "short_desc_3": {
-      "type": "string"
+      "type": "richtext"
     },
     "course_name": {
       "type": "string",
       "maxLength": 255
     },
-    "weekly_curriculum_intro": {
+    "curriculum_overview": {
       "type": "string"
     },
     "duration": {
       "type": "string",
       "maxLength": 255
     },
-    "video_url": {
+    "intro_video_url": {
       "type": "string",
       "maxLength": 255
+    },
+    "short_desc": {
+      "type": "richtext",
+      "required": true
+    },
+    "course_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-categorie.course-categorie",
+      "inversedBy": "courses"
+    },
+    "course_subcategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-subcategory.course-subcategory",
+      "inversedBy": "courses"
+    },
+    "course_learn_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course-learn-list.course-learn-list",
+      "mappedBy": "course"
+    },
+    "course_reviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-review.course-review",
+      "mappedBy": "courses"
+    },
+    "courses_instructors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::courses-instructor.courses-instructor",
+      "mappedBy": "courses"
+    },
+    "course_requirements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course-requirement.course-requirement",
+      "mappedBy": "course"
+    },
+    "courses_features": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::courses-feature.courses-feature",
+      "mappedBy": "courses"
+    },
+    "course_target_groups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-target-group.course-target-group",
+      "mappedBy": "courses"
     }
   }
 }

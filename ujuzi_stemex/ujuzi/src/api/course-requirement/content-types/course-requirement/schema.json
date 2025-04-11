@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_requirements",
+  "info": {
+    "singularName": "course-requirement",
+    "pluralName": "course-requirements",
+    "displayName": "course_requirement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "requirement_desc": {
+      "type": "string"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "course_requirements"
+    }
+  }
+}
